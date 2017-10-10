@@ -4,6 +4,29 @@
 var express = require('express');
 var app = express();
 
+var artwork = [
+  {
+    title:"Campbell's Soup Cans",
+    artist:"Andy Warhol",
+    description:"32 Campbell's Soup Cans"
+  },
+  {
+    title:"The Scream",
+    artist:"Edvard Munch",
+    description:"The works show a figure with an agonized expression against a landscape with a tumultuous orange sky."
+  },
+  {
+    title:"The Persistence Of Memory",
+    artist:"Salvador Dali",
+    description:"This work of art is known to make people ponder on their way of life and the way they spend their time."
+  },
+  {
+    title:"Girl With A Pearl Earring",
+    artist:"Johannes Vermeer",
+    description:"This beautiful painting by the Dutch artist Johannes Vermeer features, well… a girl with a pearl earring."
+  }
+];
+
 
 // MIDDLEWARE
 app.use(express.static('public'));
@@ -39,6 +62,11 @@ app.get('/pickanumber', function(req, res) {
   if (guess > answer) {
     res.send("Your guess of "+guess+" is too high. Try again.")
   };
+})
+
+app.get('/artwork', function(req,res) {
+  console.log(artwork);
+  res.json(artwork);
 })
 
 // example of multiply query search
