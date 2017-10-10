@@ -22,6 +22,33 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // ROUTES
 // Root Route
+app.get('/', function (request, response) {
+  response.sendFile('views/index.html' , { root : __dirname});
+});
+
+app.get('/pickanumber', function(req, res) {
+  var answer = 33;
+  var guess = parseInt(req.query.guess);
+  // res.send("Your guess is: "+guess);
+  if (guess === answer) {
+    res.send("Nailed it!!");
+  };
+  if (guess < answer) {
+    res.send("Your guess of "+guess+" is too low. Try again.")
+  };
+  if (guess > answer) {
+    res.send("Your guess of "+guess+" is too high. Try again.")
+  };
+})
+
+// example of multiply query search
+// http://localhost:3000/multiply?x=3&y=2
+// app.get('/multiply', function(req, res) {
+//   var x = parseInt(req.query.x);
+//   var y = parseInt(req.query.y);
+//   res.send("Your result is: "+x*y);
+// })
+
 
 
 // Gallery View Route
