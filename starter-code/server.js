@@ -65,18 +65,18 @@ app.get('/pickanumber', function(req, res) {
 })
 
 app.get('/artwork', function(req,res) {
-  console.log(artwork);
   res.json(artwork);
 })
 
-// example of multiply query search
-// http://localhost:3000/multiply?x=3&y=2
-// app.get('/multiply', function(req, res) {
-//   var x = parseInt(req.query.x);
-//   var y = parseInt(req.query.y);
-//   res.send("Your result is: "+x*y);
-// })
-
+app.post('/artwork', function(req,res) {
+  var newTitle = req.body.title;
+  var newDesc = req.body.description;
+  var newArtist = req.body.artist;
+  var newArtwork = {title: newTitle, artist: newArtist, description:newDesc};
+  artwork.push(newArtwork);
+  res.json(artwork);
+  console.log("success adding item");
+})
 
 
 // Gallery View Route
